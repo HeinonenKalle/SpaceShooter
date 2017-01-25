@@ -15,12 +15,8 @@ namespace SpaceShooter
         #region Unity messages
         protected virtual void Awake()
         {
-            Health = GetComponent<Health>();
-            if(Health == null)
-            {
-                Health = gameObject.GetOrAddComponent<Health>();
-                Mover = gameObject.GetOrAddComponent<Mover>();
-            }
+            Health = gameObject.GetOrAddComponent<Health>();
+            Mover = gameObject.GetOrAddComponent<Mover>();
         }
         #endregion
 
