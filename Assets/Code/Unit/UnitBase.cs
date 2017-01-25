@@ -10,15 +10,22 @@ namespace SpaceShooter
         #region Properties
         public IHealth Health { get; protected set; }
         public IMover Mover { get; protected set; }
+        public WeaponController Weapons { get; protected set; }
         #endregion
 
         #region Unity messages
         protected virtual void Awake()
         {
-            Health = gameObject.GetOrAddComponent<Health>();
-            Mover = gameObject.GetOrAddComponent<Mover>();
+            InitRequiredComponents();
         }
         #endregion
+
+        private void InitRequiredComponents()
+        {
+            Health = gameObject.GetOrAddComponent<Health>();
+            Mover = gameObject.GetOrAddComponent<Mover>();
+            Weapons = gameObject.GetComponentInChildren<WeaponController>();
+        }
 
         #region Public Interface
         public void TakeDamage(int amount)

@@ -17,15 +17,21 @@ namespace SpaceShooter
         private float _shootingForce;
         [SerializeField]
         private int _damage;
-
+        [SerializeField]
+        private ProjectileType _projectileType;
         #endregion
 
         private Rigidbody _rigidBody;
+        private Material _trailMaterial;
+        private TrailRenderer _trailRenderer;
+
+        public ProjectileType Type { get { return _projectileType; } }
 
         #region Unity messages
         protected virtual void Awake()
         {
             _rigidBody = GetComponent<Rigidbody>();
+            _trailRenderer = GetComponent<TrailRenderer>();
         }
 
         protected void OnCollisionEnter(Collision coll)
@@ -39,11 +45,30 @@ namespace SpaceShooter
                 Destroy(gameObject);
             }
         }
+
+        protected void OnTriggerEnter(Collider coll)
+        {
+            if (coll.gameObject.layer == LayerMask.NameToLayer("Destroyer"))
+            {
+                Destroy(gameObject);
+            }
+
+        }
         #endregion
 
         public void Shoot(Vector3 direction)
         {
             _rigidBody.AddForce(direction * _shootingForce, ForceMode.Impulse);
+        }
+
+        public void ChangeTrailMaterial(Material mat)
+        {
+            _trailRenderer.material = mat;
+        }
+
+        public void ChangeTrailMaterialColor(Color samba)
+        {
+            _trailRenderer.material.color = samba;
         }
     }
 }

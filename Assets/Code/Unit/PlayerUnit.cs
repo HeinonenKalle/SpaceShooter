@@ -32,6 +32,13 @@ namespace SpaceShooter
             Vector3 input = new Vector3(horizontal, 0, vertical);
 
             Mover.MoveToDirection(input);
+
+            bool shoot = Input.GetButton("Shoot");
+
+            if (shoot)
+            {
+                Weapons.Shoot(ProjectileLayer);
+            }
         }
     }
 }

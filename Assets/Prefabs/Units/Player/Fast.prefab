@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4481684868149722}
+  - component: {fileID: 114650599727669870}
   m_Layer: 8
   m_Name: Weapons
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4727182643673668}
+  - component: {fileID: 114019510242717248}
   m_Layer: 8
   m_Name: Weapon1
   m_TagString: Untagged
@@ -71,6 +73,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4037016714041706}
+  - component: {fileID: 114858532210895858}
   m_Layer: 8
   m_Name: Weapon2
   m_TagString: Untagged
@@ -200,6 +203,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 6c11e79470dad4b4bb66b279d2660007, type: 3}
+--- !u!114 &114019510242717248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278990782290844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc30e55ac13908a439ffbf93dca2d6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileType: 1
 --- !u!114 &114091386659555964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,3 +250,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a90e609eb1a84fadb8761f2b88bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114650599727669870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104730460193726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2db0f9a2c479d74fb8705b342889473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingSpeed: 2
+  _trailColor: 1
+--- !u!114 &114858532210895858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712458083022764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc30e55ac13908a439ffbf93dca2d6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileType: 1
