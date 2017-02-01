@@ -51,6 +51,8 @@ namespace SpaceShooter.Systems
 
         private void Init()
         {
+            DontDestroyOnLoad(gameObject);
+
             //Initialize
             if (_prefabs == null)
             {

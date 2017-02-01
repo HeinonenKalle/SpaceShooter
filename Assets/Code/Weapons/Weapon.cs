@@ -36,26 +36,9 @@ namespace SpaceShooter
             if (projectilePrefab != null)
             {
                 Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-                //projectile.ChangeTrailMaterial(Global.Instance.TrailMaterials[(int) trailColor]);
                 projectile.ChangeTrailMaterialColor(trailColor);
 
-                /*if (trailColor != TrailColor.Yellow)
-                {
-                    if (trailColor == TrailColor.Green)
-                    {
-                        projectile.ChangeTrailMaterial(Global.Instance.TrailMaterials[1]);
-                    }
-                    else if (trailColor == TrailColor.Red)
-                    {
-                        projectile.ChangeTrailMaterial(Global.Instance.TrailMaterials[2]);
-                    }
-                    else if (trailColor == TrailColor.Black)
-                    {
-                        projectile.ChangeTrailMaterial(Global.Instance.TrailMaterials[3]);
-                    }
-                }*/
-
-            return projectile;
+                return projectile;
             }
 
             return null;

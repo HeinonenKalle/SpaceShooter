@@ -21,7 +21,7 @@ namespace SpaceShooter
         private ProjectileType _projectileType;
         #endregion
 
-        private Rigidbody _rigidBody;
+        public Rigidbody Rigidbody { get; private set; }
         private Material _trailMaterial;
         private TrailRenderer _trailRenderer;
 
@@ -30,7 +30,7 @@ namespace SpaceShooter
         #region Unity messages
         protected virtual void Awake()
         {
-            _rigidBody = GetComponent<Rigidbody>();
+            Rigidbody = GetComponent<Rigidbody>();
             _trailRenderer = GetComponent<TrailRenderer>();
         }
 
@@ -58,7 +58,7 @@ namespace SpaceShooter
 
         public void Shoot(Vector3 direction)
         {
-            _rigidBody.AddForce(direction * _shootingForce, ForceMode.Impulse);
+            Rigidbody.AddForce(direction * _shootingForce, ForceMode.Impulse);
         }
 
         public void ChangeTrailMaterial(Material mat)
