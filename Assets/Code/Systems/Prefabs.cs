@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using ProjectileType = SpaceShooter.Projectile.ProjectileType;
 
 namespace SpaceShooter.Systems
 {

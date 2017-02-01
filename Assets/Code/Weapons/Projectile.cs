@@ -2,16 +2,16 @@
 
 namespace SpaceShooter
 {
+    public enum ProjectileType
+    {
+        None = 0,
+        Laser = 1,
+        Explosive = 2,
+        Missile = 3
+    }
+
     public class Projectile : MonoBehaviour
     {
-        public enum ProjectileType
-        {
-            None = 0,
-            Laser = 1,
-            Explosive = 2,
-            Missile = 3
-        }
-
         #region Unity fields
         [SerializeField]
         private float _shootingForce;
@@ -20,6 +20,8 @@ namespace SpaceShooter
         [SerializeField]
         private ProjectileType _projectileType;
         #endregion
+
+        private IShooter _shooter;
 
         public Rigidbody Rigidbody { get; private set; }
         private Material _trailMaterial;
@@ -42,7 +44,7 @@ namespace SpaceShooter
             {
                 damageReceiver.TakeDamage(_damage);
 
-                Destroy(gameObject);
+                _shooter.ProjectileHit(this);
             }
         }
 
@@ -50,15 +52,17 @@ namespace SpaceShooter
         {
             if (coll.gameObject.layer == LayerMask.NameToLayer("Destroyer"))
             {
-                Destroy(gameObject);
+                _shooter.ProjectileHit(this);
             }
 
         }
         #endregion
 
-        public void Shoot(Vector3 direction)
+        public void Shoot(IShooter shooter, Vector3 direction)
         {
+            _shooter = shooter;
             Rigidbody.AddForce(direction * _shootingForce, ForceMode.Impulse);
+
         }
 
         public void ChangeTrailMaterial(Material mat)

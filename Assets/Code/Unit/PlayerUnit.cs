@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
-    class PlayerUnit : UnitBase
+    public class PlayerUnit : UnitBase
     {
-        public enum UnityType
+        public enum UnitType
         {
             None = 0,
             Fast = 1,

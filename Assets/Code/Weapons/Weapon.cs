@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using ProjectileType = SpaceShooter.Projectile.ProjectileType;
 using SpaceShooter.Utility;
 using SpaceShooter.Systems;
+using System;
 
 namespace SpaceShooter
 {
-    class Weapon : MonoBehaviour
+    class Weapon : MonoBehaviour, IShooter
     {
         public enum TrailColor
         {
@@ -24,24 +24,45 @@ namespace SpaceShooter
 
             if (projectile != null)
             {
+                projectile.gameObject.SetActive(true);
+                projectile.transform.position = transform.position;
+                projectile.transform.forward = transform.forward;
                 projectile.gameObject.SetLayer(projectileLayer);
-                projectile.Shoot(transform.forward);
+                projectile.Shoot(this, transform.forward);
+            }
+            else
+            {
+                Debug.LogError("Could not get Projectile");
             }
         }
 
         private Projectile GetProjectile(Color trailColor)
         {
-            Projectile projectilePrefab = Global.Instance.Prefabs.GetProjectilePrefabByType(_projectileType);
+            Projectile result = null;
 
-            if (projectilePrefab != null)
+            ProjectilePool pool = Global.Instance.Pools.GetPool(_projectileType);
+
+            if (pool != null)
             {
-                Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-                projectile.ChangeTrailMaterialColor(trailColor);
-
-                return projectile;
+                result = pool.GetPooledObject();
+                //result.ChangeTrailMaterialColor(trailColor);
             }
 
-            return null;
+            return result;
+        }
+
+         public void ProjectileHit(Projectile projectile)
+        {
+            ProjectilePool pool = Global.Instance.Pools.GetPool(_projectileType);
+
+            if (pool != null)
+            {
+                pool.ReturnObjectToPool(projectile);
+            }
+            else
+            {
+                Destroy(projectile.gameObject);
+            }
         }
     }
 }
