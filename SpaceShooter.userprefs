@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\Unit\Mover.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets\Code\Unit\UnitBase.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\Unit\Mover.cs" Line="1" Column="1" />

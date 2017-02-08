@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a90e609eb1a84fadb8761f2b88bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 1
 --- !u!114 &114650599727669870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingSpeed: 2
   _trailColor: 1
+  MarkusHyvarinen: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114858532210895858
 MonoBehaviour:
   m_ObjectHideFlags: 1

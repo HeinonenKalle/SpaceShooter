@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using SpaceShooter.Data;
 
 namespace SpaceShooter
 {
@@ -12,6 +13,11 @@ namespace SpaceShooter
             Balanced = 2,
             Heavy = 3
         }
+
+        [SerializeField] private UnitType _type;
+
+        public UnitType Type { get { return _type; } }
+        public PlayerData Data { get; private set; }
 
         public override int ProjectileLayer
         {
@@ -39,6 +45,11 @@ namespace SpaceShooter
             {
                 Weapons.Shoot(ProjectileLayer);
             }
+        }
+
+        public void Init(PlayerData playerData)
+        {
+            Data = playerData;
         }
     }
 }

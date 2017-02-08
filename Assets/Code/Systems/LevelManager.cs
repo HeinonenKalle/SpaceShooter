@@ -4,8 +4,13 @@ using UnityEngine;
 
 namespace SpaceShooter.Systems
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : SceneManager
     {
+        [SerializeField]
+        private PlayerUnits _playerUnits;
+
+        public PlayerUnits PlayerUnits { get { return _playerUnits; } }
+
         protected void Awake()
         {
             Initialize();
