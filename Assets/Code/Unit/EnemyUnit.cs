@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SpaceShooter.Configs;
 
 namespace SpaceShooter
 {
@@ -11,13 +12,15 @@ namespace SpaceShooter
 
         public override int ProjectileLayer
         {
-            get { return LayerMask.NameToLayer("EnemyProjectile"); }
+            get { return LayerMask.NameToLayer(Config.EnemyProjectileLayerName); }
         }
 
         protected override void Die()
         {
             gameObject.SetActive(false);
-            EnemyUnits.EnemyDie(this);
+            //EnemyUnits.EnemyDied(this);
+
+            base.Die();
         }
 
         public void Init(EnemyUnits enemyUnits)

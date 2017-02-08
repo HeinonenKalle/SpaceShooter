@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using SpaceShooter.Data;
+using SpaceShooter.Configs;
 
 namespace SpaceShooter
 {
@@ -21,13 +22,15 @@ namespace SpaceShooter
 
         public override int ProjectileLayer
         {
-            get { return LayerMask.NameToLayer("PlayerProjectile"); }
+            get { return LayerMask.NameToLayer(Config.PlayerProjectileLayerName); }
         }
 
         protected override void Die()
         {
             // TODO: Handle dying properly
             gameObject.SetActive(false);
+
+            base.Die();
         }
 
         protected void Update()

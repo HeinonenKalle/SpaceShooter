@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,20 @@ namespace SpaceShooter
     {
         public event Action<EnemyUnit> EnemyDestroyed;
 
-        public void EnemyDie(EnemyUnit enemyUnit)
+        private List<EnemyUnit> _enemies = new List<EnemyUnit>();
+
+        public void Init()
+        {
+            EnemyUnit[] enemies = FindObjectsOfType<EnemyUnit>();
+
+            foreach(EnemyUnit enemy in enemies)
+            {
+                _enemies.Add(enemy);
+                enemy.Init(this);
+            }
+        }
+
+        public void EnemyDied(EnemyUnit enemyUnit)
         {
             if(EnemyDestroyed != null)
             {

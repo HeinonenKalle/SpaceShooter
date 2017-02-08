@@ -50,9 +50,11 @@
      <Compile Include="Assets\Code\Interfaces\IHealth.cs" />
      <Compile Include="Assets\Code\Interfaces\IMover.cs" />
      <Compile Include="Assets\Code\Interfaces\IShooter.cs" />
+     <Compile Include="Assets\Code\Systems\Config.cs" />
      <Compile Include="Assets\Code\Systems\GenericPool.cs" />
      <Compile Include="Assets\Code\Systems\Global.cs" />
      <Compile Include="Assets\Code\Systems\LevelManager.cs" />
+     <Compile Include="Assets\Code\Systems\MenuManager.cs" />
      <Compile Include="Assets\Code\Systems\Pools.cs" />
      <Compile Include="Assets\Code\Systems\Prefabs.cs" />
      <Compile Include="Assets\Code\Systems\ProjectilePool.cs" />
