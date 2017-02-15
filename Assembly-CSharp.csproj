@@ -51,6 +51,7 @@
      <Compile Include="Assets\Code\Interfaces\IMover.cs" />
      <Compile Include="Assets\Code\Interfaces\IShooter.cs" />
      <Compile Include="Assets\Code\Systems\Config.cs" />
+     <Compile Include="Assets\Code\Systems\GameManager.cs" />
      <Compile Include="Assets\Code\Systems\GenericPool.cs" />
      <Compile Include="Assets\Code\Systems\Global.cs" />
      <Compile Include="Assets\Code\Systems\LevelManager.cs" />
@@ -59,6 +60,9 @@
      <Compile Include="Assets\Code\Systems\Prefabs.cs" />
      <Compile Include="Assets\Code\Systems\ProjectilePool.cs" />
      <Compile Include="Assets\Code\Systems\SceneManager.cs" />
+     <Compile Include="Assets\Code\Systems\States\GameState.cs" />
+     <Compile Include="Assets\Code\Systems\States\GameStateBase.cs" />
+     <Compile Include="Assets\Code\Systems\States\MenuState.cs" />
      <Compile Include="Assets\Code\Unit\EnemyUnit.cs" />
      <Compile Include="Assets\Code\Unit\EnemyUnits.cs" />
      <Compile Include="Assets\Code\Unit\Health.cs" />
