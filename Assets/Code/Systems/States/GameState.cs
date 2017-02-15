@@ -26,6 +26,7 @@ namespace SpaceShooter.Systems.States
         
         public GameState(int levelIndex) : base()
         {
+            CurrentLevelIndex = levelIndex;
             State = GameStateType.InGameState;
             AddTransition(GameStateTransitionType.InGameToGameOver, GameStateType.GameOverState);
             AddTransition(GameStateTransitionType.InGameToMenu, GameStateType.MenuState);

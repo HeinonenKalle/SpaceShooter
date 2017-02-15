@@ -1,22 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-namespace SpaceShooter.Data
+namespace SpaceShooter.Systems
 {
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : SceneManager
     {
+        public override GameStateType StateType
+        {
+            get
+            {
+                return GameStateType.MenuState;
+            }
+        }
 
         // Use this for initialization
         public void StartGame()
         {
-            Debug.Log("Start");
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
         }
 
         // Update is called once per frame
         public void LoadGame()
         {
-            Debug.Log("Load");
+
         }
 
         public void QuitGame()

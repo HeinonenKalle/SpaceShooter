@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooter.Data;
+using System;
 
 namespace SpaceShooter.Systems
 {
@@ -9,6 +10,14 @@ namespace SpaceShooter.Systems
     {
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
+
+        public override GameStateType StateType
+        {
+            get
+            {
+                return GameStateType.InGameState;
+            }
+        }
 
         protected void Awake()
         {

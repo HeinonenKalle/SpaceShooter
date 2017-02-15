@@ -16,7 +16,7 @@ namespace SpaceShooter.Systems.States
             }
         }
 
-       public MenuState()
+       public MenuState() : base()
         {
             State = GameStateType.MenuState;
             AddTransition(GameStateTransitionType.MenuToInGame, GameStateType.InGameState);

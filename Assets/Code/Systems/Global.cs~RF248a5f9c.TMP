@@ -42,7 +42,7 @@ namespace SpaceShooter.Systems
                 _instance = this;
             }
 
-            if (_instance == this)
+            if (_instance = this)
             {
                 Init();
             }

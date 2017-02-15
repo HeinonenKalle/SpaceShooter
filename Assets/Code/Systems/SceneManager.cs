@@ -1,22 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using SpaceShooter.Systems.States;
 
 namespace SpaceShooter.Systems
 {
     public abstract class SceneManager : MonoBehaviour
     {
-
-        // Use this for initialization
-        void Start()
+        public abstract GameStateType StateType { get; }
+        public virtual GameStateBase AssociatedState
         {
+            get
+            {
+                if (_associatedState == null)
+                {
+                    _associatedState = Global.Instance.GameManager.GetStateByStateType(StateType);
+                }
 
+                return _associatedState;
+            }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        private GameStateBase _associatedState;
     }
 }

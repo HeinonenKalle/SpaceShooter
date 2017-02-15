@@ -6,7 +6,7 @@ using SM = UnityEngine.SceneManagement;
 
 namespace SpaceShooter.Systems.States
 {
-    public abstract class GameStateBase : MonoBehaviour
+    public abstract class GameStateBase
     {
         public abstract string SceneName { get; }
         public GameStateType State { get; protected set; }
@@ -59,12 +59,13 @@ namespace SpaceShooter.Systems.States
             if (scene == SM.SceneManager.GetSceneByName(SceneName))
             {
                 SM.SceneManager.sceneLoaded -= HandleSceneLoaded;
+                Global.Instance.GameManager.RaiseGameStateChangedEvent(State);
             }
         }
 
         public virtual void StateDeactivating()
         {
-
+            Global.Instance.GameManager.RaiseGameStateChangingEvent(State);
         }
 
         private IEnumerator LoadScene()
