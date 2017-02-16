@@ -10,6 +10,7 @@ namespace SpaceShooter.Systems
     {
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
+		public InputManager InputManager { get; private set; }
 
         public override GameStateType StateType
         {
@@ -28,15 +29,24 @@ namespace SpaceShooter.Systems
         {
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
+			InputManager = GetComponentInChildren<InputManager> ();
 
             PlayerData playerData = new PlayerData()
             {
                 Id = PlayerData.PlayerId.Player1,
+				Controller = PlayerData.ControlType.WASD,
                 UnitType = PlayerUnit.UnitType.Balanced,
                 Lives = 3
             };
 
-            PlayerUnits.Init(playerData);
+			PlayerData playerDataTwo = new PlayerData () {
+				Id = PlayerData.PlayerId.Player2,
+				Controller = PlayerData.ControlType.Arrows,
+				UnitType = PlayerUnit.UnitType.Fast,
+				Lives = 3
+			};
+
+			PlayerUnits.Init(playerData, playerDataTwo);
             EnemyUnits.Init();
         }
     }

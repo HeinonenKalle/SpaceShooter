@@ -7,6 +7,7 @@ namespace SpaceShooter
 {
     public class PlayerUnits : MonoBehaviour
     {
+		public InputManager ManagerOfInputs;
         private Dictionary<PlayerData.PlayerId, PlayerUnit> _players = new Dictionary<PlayerData.PlayerId, PlayerUnit>();
 
         public void Init(params PlayerData[] players)
@@ -23,6 +24,7 @@ namespace SpaceShooter
                     unit.Init(playerData);
 
                     _players.Add(playerData.Id, unit);
+					ManagerOfInputs.AddPlayerToList (unit);
                 }
                 else
                 {

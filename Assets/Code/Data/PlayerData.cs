@@ -13,7 +13,16 @@ namespace SpaceShooter.Data
             Player4 = 4
         }
 
+		public enum ControlType
+		{
+			WASD,
+			Arrows,
+			Gamepad1,
+			Gamepad2
+		}
+
         public PlayerId Id;
+		public ControlType Controller;
         public PlayerUnit.UnitType UnitType;
         public int Lives;
     }

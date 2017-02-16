@@ -35,6 +35,7 @@ namespace SpaceShooter
 
         protected void Update()
         {
+			/*
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
@@ -48,6 +49,7 @@ namespace SpaceShooter
             {
                 Weapons.Shoot(ProjectileLayer);
             }
+			*/
         }
 
         public void Init(PlayerData playerData)
