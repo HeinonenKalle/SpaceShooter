@@ -39,14 +39,31 @@ namespace SpaceShooter.Systems
                 Lives = 3
             };
 
-			PlayerData playerDataTwo = new PlayerData () {
+			PlayerData playerDataTwo = new PlayerData()
+            {
 				Id = PlayerData.PlayerId.Player2,
 				Controller = PlayerData.ControlType.Arrows,
 				UnitType = PlayerUnit.UnitType.Fast,
 				Lives = 3
 			};
 
-			PlayerUnits.Init(playerData, playerDataTwo);
+            PlayerData playerDataThree = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player3,
+                Controller = PlayerData.ControlType.Gamepad1,
+                UnitType = PlayerUnit.UnitType.Heavy,
+                Lives = 3
+            };
+
+            PlayerData playerDataFour = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player4,
+                Controller = PlayerData.ControlType.Gamepad2,
+                UnitType = PlayerUnit.UnitType.Balanced,
+                Lives = 3
+            };
+
+			PlayerUnits.Init(playerData, playerDataTwo, playerDataThree, playerDataFour);
             EnemyUnits.Init();
         }
     }
