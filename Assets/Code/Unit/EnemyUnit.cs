@@ -18,14 +18,14 @@ namespace SpaceShooter
         protected override void Die()
         {
             gameObject.SetActive(false);
-            //EnemyUnits.EnemyDied(this);
+            EnemyUnits.EnemyDied(this);
 
             base.Die();
         }
 
         public void Init(EnemyUnits enemyUnits)
         {
-            enemyUnits = EnemyUnits;
+            EnemyUnits = enemyUnits;
         }
     }
 }

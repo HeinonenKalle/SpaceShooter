@@ -18,6 +18,7 @@ namespace SpaceShooter.Systems
         Error = 1,
         MenuToInGame,
         InGameToMenu,
+        InGameToInGame,
         InGameToGameOver,
         GameOverToMenu
     }

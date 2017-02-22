@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooter.Data;
 using System;
+using SpaceShooter.Systems.States;
 
 namespace SpaceShooter.Systems
 {
     public class LevelManager : SceneManager
     {
+        private ConditionBase[] _conditions;
+
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
 		public InputManager InputManager { get; private set; }
@@ -65,6 +68,32 @@ namespace SpaceShooter.Systems
 
 			PlayerUnits.Init(playerData, playerDataTwo, playerDataThree, playerDataFour);
             EnemyUnits.Init();
+
+            _conditions = GetComponentsInChildren<ConditionBase>();
+
+            foreach (var condition in _conditions)
+            {
+                condition.Init(this);
+            }
+        }
+
+        internal void ConditionMet(ConditionBase condition)
+        {
+            bool areConditionsMet = true;
+
+            foreach (var c in _conditions)
+            {
+                if (!c.IsConditionMet)
+                {
+                    areConditionsMet = false;
+                    break;
+                }
+            }
+
+            if (areConditionsMet)
+            {
+                (AssociatedState as GameState).LevelCompleted();
+            }
         }
     }
 }
