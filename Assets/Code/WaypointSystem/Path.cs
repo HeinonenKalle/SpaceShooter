@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace SpaceShooter.WaypointSystem
 {
@@ -33,16 +34,134 @@ namespace SpaceShooter.WaypointSystem
             }
         }
 
-        // Use this for initialization
-        void Start()
+        public Waypoint GetClosestWaypoint(Vector3 position)
         {
+            float smallestSqrMagnitude = float.PositiveInfinity;
+            Waypoint closest = null;
 
+            foreach (var waypoint in Waypoints)
+            {
+                Vector3 toWaypointVector = waypoint.Position - position;
+                float currentSqrMagnitude = toWaypointVector.sqrMagnitude;
+
+                //float currentDistance = Vector3.Distance(waypoint.Position, position);
+
+                if (currentSqrMagnitude < smallestSqrMagnitude)
+                {
+                    smallestSqrMagnitude = currentSqrMagnitude;
+                    closest = waypoint;
+                }
+            }
+
+            return closest;
         }
 
-        // Update is called once per frame
-        void Update()
+        public Waypoint GetNextWaypoint(Waypoint currentWaypoint, ref Direction direction)
         {
+            Waypoint nextWaypoint = null;
 
+            for (int i = 0; i < Waypoints.Count; i++)
+            {
+                if (Waypoints[i] == currentWaypoint)
+                {
+                    switch (_pathType)
+                    {
+                        case PathType.Loop:
+                            {
+                                nextWaypoint = GetNextWaypointLoop(i, direction);
+                                break;
+                            }
+                        case PathType.OneWay:
+                            {
+                                nextWaypoint = GetNextWaypointOneWay(i, direction);
+                                break;
+                            }
+                        case PathType.PingPong:
+                            {
+                                nextWaypoint = GetNextWaypointPingPong(i, ref direction);
+                                break;
+                            }
+                    }
+                }
+            }
+
+            return nextWaypoint;
+        }
+
+        private Waypoint GetNextWaypointLoop(int currentWaypointIndex, Direction direction)
+        {
+            return direction == Direction.Forward 
+                ? Waypoints[++currentWaypointIndex % Waypoints.Count]
+                : Waypoints[(--currentWaypointIndex >= 0 
+                                ? currentWaypointIndex
+                                : Waypoints.Count - 1) % Waypoints.Count];
+            
+        }
+        private Waypoint GetNextWaypointOneWay(int currentWaypointIndex, Direction direction)
+        {
+            Waypoint nextWaypoint = null;
+
+            switch (direction)
+            {
+                case Direction.Forward:
+                    {
+                        if (currentWaypointIndex < Waypoints.Count - 1)
+                        {
+                            nextWaypoint = Waypoints[currentWaypointIndex + 1];
+                        }
+
+                        break;
+                    }
+                case Direction.Backward:
+                    {
+                        if (currentWaypointIndex > 0)
+                        {
+                            nextWaypoint = Waypoints[currentWaypointIndex - 1];
+                        }
+
+                        break;
+                    }
+            }
+
+            return nextWaypoint;
+        }
+        private Waypoint GetNextWaypointPingPong(int currentWaypointIndex, ref Direction direction)
+        {
+            Waypoint nextWaypoint = null;
+
+            switch (direction)
+            {
+                case Direction.Forward:
+                    {
+                        if (currentWaypointIndex < Waypoints.Count - 1)
+                        {
+                            nextWaypoint = Waypoints[currentWaypointIndex + 1];
+                        }
+                        else
+                        {
+                            nextWaypoint = Waypoints[currentWaypointIndex - 1];
+                            direction = Direction.Backward;
+                        }
+
+                        break;
+                    }
+                case Direction.Backward:
+                    {
+                        if (currentWaypointIndex > 0)
+                        {
+                            nextWaypoint = Waypoints[currentWaypointIndex - 1];
+                        }
+                        else
+                        {
+                            nextWaypoint = Waypoints[currentWaypointIndex + 1];
+                            direction = Direction.Forward;
+                        }
+
+                        break;
+                    }
+            }
+
+            return nextWaypoint;
         }
 
         private void OnDrawGizmos()

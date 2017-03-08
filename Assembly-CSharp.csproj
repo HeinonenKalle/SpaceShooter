@@ -78,6 +78,7 @@
     <Compile Include="Assets\Code\Unit\UnitBase.cs" />
     <Compile Include="Assets\Code\Utility\Extensions.cs" />
     <Compile Include="Assets\Code\WaypointSystem\IPathUser.cs" />
+    <Compile Include="Assets\Code\WaypointSystem\Path.cs" />
     <Compile Include="Assets\Code\WaypointSystem\Waypoint.cs" />
     <Compile Include="Assets\Code\WaypointSystem\WaypointSystem.cs" />
     <Compile Include="Assets\Code\Weapons\Projectile.cs" />
