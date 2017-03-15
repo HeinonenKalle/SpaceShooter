@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooter.Utility;
+using SpaceShooter.Data;
+using SpaceShooter.SaveLoad;
 
 namespace SpaceShooter.Systems
 {
@@ -34,6 +36,8 @@ namespace SpaceShooter.Systems
         public Prefabs Prefabs { get { return _prefabs; } }
         public Pools Pools { get { return _pools; } }
         public GameManager GameManager { get; private set; }
+        public GameData CurrentGameData { get; set; }
+        public SaveManager SaveManager { get; private set; }
 
         protected void Awake()
         {
@@ -66,6 +70,10 @@ namespace SpaceShooter.Systems
             {
                 _pools = GetComponentInChildren<Pools>();
             }
+
+            //SaveManager = new SaveManager(new BinaryFormatterSaveLoad<GameData>());
+            SaveManager = new SaveManager(new JsonSaveLoad<GameData>());
+
 
             GameManager = gameObject.GetOrAddComponent<GameManager>();
             GameManager.Init();

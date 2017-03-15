@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Conditions\ConditionBase.cs" />
      <Compile Include="Assets\Code\Conditions\EnemiesKilledCondition.cs" />
+     <Compile Include="Assets\Code\Data\GameData.cs" />
      <Compile Include="Assets\Code\Data\PlayerData.cs" />
      <Compile Include="Assets\Code\GUI\GlobalGUI.cs" />
      <Compile Include="Assets\Code\GUI\LoadingIndicator.cs" />
@@ -55,16 +56,20 @@
      <Compile Include="Assets\Code\Interfaces\IMover.cs" />
      <Compile Include="Assets\Code\Interfaces\IShooter.cs" />
      <Compile Include="Assets\Code\Systems\AsteroidPool.cs" />
+     <Compile Include="Assets\Code\Systems\BinaryFormatterSaveLoad.cs" />
      <Compile Include="Assets\Code\Systems\Config.cs" />
      <Compile Include="Assets\Code\Systems\GameManager.cs" />
      <Compile Include="Assets\Code\Systems\GenericPool.cs" />
      <Compile Include="Assets\Code\Systems\Global.cs" />
+     <Compile Include="Assets\Code\Systems\ISaveLoad.cs" />
      <Compile Include="Assets\Code\Systems\InputManager.cs" />
+     <Compile Include="Assets\Code\Systems\JsonSaveLoad.cs" />
      <Compile Include="Assets\Code\Systems\LevelManager.cs" />
      <Compile Include="Assets\Code\Systems\MenuManager.cs" />
      <Compile Include="Assets\Code\Systems\Pools.cs" />
      <Compile Include="Assets\Code\Systems\Prefabs.cs" />
      <Compile Include="Assets\Code\Systems\ProjectilePool.cs" />
+     <Compile Include="Assets\Code\Systems\SaveManager.cs" />
      <Compile Include="Assets\Code\Systems\SceneManager.cs" />
      <Compile Include="Assets\Code\Systems\States\GameState.cs" />
      <Compile Include="Assets\Code\Systems\States\GameStateBase.cs" />

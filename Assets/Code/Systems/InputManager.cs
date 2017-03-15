@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Controller = SpaceShooter.Data.PlayerData.ControlType;
+using System;
 
 namespace SpaceShooter.Systems
 {
@@ -97,7 +98,17 @@ namespace SpaceShooter.Systems
 					}
 				}
 			}
+
+            PollSave();
 		}
+
+        private void PollSave()
+        {
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData, DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss"));
+            }
+        }
 	}
 }
 
