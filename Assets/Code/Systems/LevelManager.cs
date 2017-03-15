@@ -4,12 +4,14 @@ using UnityEngine;
 using SpaceShooter.Data;
 using System;
 using SpaceShooter.Systems.States;
+using SpaceShooter.Level;
 
 namespace SpaceShooter.Systems
 {
     public class LevelManager : SceneManager
     {
         private ConditionBase[] _conditions;
+        private EnemySpawner[] _enemySpawners;
 
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
@@ -32,7 +34,15 @@ namespace SpaceShooter.Systems
         {
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
+            //EnemyUnits.Init();
 			InputManager = GetComponentInChildren<InputManager> ();
+
+            _enemySpawners = GetComponentsInChildren<EnemySpawner>();
+
+            foreach (var enemySpawner in _enemySpawners)
+            {
+                enemySpawner.Init(EnemyUnits);
+            }
 
             PlayerData playerData = new PlayerData()
             {
@@ -67,7 +77,7 @@ namespace SpaceShooter.Systems
             };
 
 			PlayerUnits.Init(playerData, playerDataTwo, playerDataThree, playerDataFour);
-            EnemyUnits.Init();
+            //EnemyUnits.Init();
 
             _conditions = GetComponentsInChildren<ConditionBase>();
 

@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using SpaceShooter.Configs;
+using SpaceShooter.WaypointSystem;
+using SpaceShooter.Utility;
 
 namespace SpaceShooter
 {
     public class EnemyUnit : UnitBase
     {
         public EnemyUnits EnemyUnits { get; private set; }
+
+        private IPathUser _pathUser;
 
         public override int ProjectileLayer
         {
@@ -23,9 +24,14 @@ namespace SpaceShooter
             base.Die();
         }
 
-        public void Init(EnemyUnits enemyUnits)
+        public void Init(EnemyUnits enemyUnits, Path path)
         {
+            InitRequiredComponents();
+
             EnemyUnits = enemyUnits;
+            _pathUser = gameObject.GetOrAddComponent<PathUser>();
+
+            _pathUser.Init(Mover, path);
         }
     }
 }

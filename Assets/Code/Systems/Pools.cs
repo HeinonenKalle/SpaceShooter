@@ -7,6 +7,7 @@ namespace SpaceShooter.Systems
     public class Pools : MonoBehaviour
     {
         [SerializeField] private List<ProjectilePool> _projectilePools = new List<ProjectilePool>();
+        [SerializeField] private AsteroidPool _asteroidPool;
 
         public ProjectilePool GetPool(ProjectileType projectileType)
         {
@@ -23,6 +24,8 @@ namespace SpaceShooter.Systems
 
             return result;
         }
+
+        public AsteroidPool AsteroidPool { get { return _asteroidPool; } }
 
         // Use this for initialization
         void Start()

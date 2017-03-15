@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114005977324721382}
   - component: {fileID: 114555091021983956}
   - component: {fileID: 114305361835032158}
+  - component: {fileID: 114843722464936200}
   m_Layer: 9
   m_Name: RockEnemy
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773549519659640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6.37}
+  m_LocalPosition: {x: -7.38, y: 0, z: 19.48}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4588504296791532}
@@ -194,6 +195,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+--- !u!114 &114843722464936200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773549519659640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb68976b2f5be5d4593672be7011b04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: 0
+  _arriveDistance: 0.1
 --- !u!135 &135367141540455362
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -54,6 +54,8 @@ namespace SpaceShooter
 
         public void Init(PlayerData playerData)
         {
+            InitRequiredComponents();
+
             Data = playerData;
         }
     }

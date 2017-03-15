@@ -13,14 +13,7 @@ namespace SpaceShooter
         public WeaponController Weapons { get; protected set; }
         #endregion
 
-        #region Unity messages
-        protected virtual void Awake()
-        {
-            InitRequiredComponents();
-        }
-        #endregion
-
-        private void InitRequiredComponents()
+        protected void InitRequiredComponents()
         {
             Health = gameObject.GetOrAddComponent<Health>();
             Mover = gameObject.GetOrAddComponent<Mover>();

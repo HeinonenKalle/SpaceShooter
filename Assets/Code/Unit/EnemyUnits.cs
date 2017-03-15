@@ -17,7 +17,7 @@ namespace SpaceShooter
             foreach(EnemyUnit enemy in enemies)
             {
                 _enemies.Add(enemy);
-                enemy.Init(this);
+                enemy.Init(this, null);
             }
         }
 
