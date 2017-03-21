@@ -2,6 +2,8 @@
 using UnityEngine;
 using SpaceShooter.Data;
 using SpaceShooter.Configs;
+using PlayerDataPlayerId = SpaceShooter.Data.PlayerData.PlayerId;
+using SpaceShooter.Systems;
 
 namespace SpaceShooter
 {
@@ -20,36 +22,66 @@ namespace SpaceShooter
         public UnitType Type { get { return _type; } }
         public PlayerData Data { get; private set; }
 
+		public bool IsInvulnerable { get; private set; }
+
         public override int ProjectileLayer
         {
             get { return LayerMask.NameToLayer(Config.PlayerProjectileLayerName); }
         }
+
+		private float _invulnerableTimer;
 
         protected override void Die()
         {
             // TODO: Handle dying properly
             gameObject.SetActive(false);
 
-            base.Die();
+			if (Data.Lives >= 1)
+			{
+				Data.Lives--;
+
+				switch (Data.Id)
+				{
+				case PlayerDataPlayerId.Player1:
+					{
+						gameObject.transform.position = Global.Instance.PlayerOneSpawnPoint;
+						break;
+					}
+				case PlayerDataPlayerId.Player2:
+					{
+						gameObject.transform.position = Global.Instance.PlayerOneSpawnPoint;
+						break;
+					}
+				case PlayerDataPlayerId.Player3:
+					{
+						gameObject.transform.position = Global.Instance.PlayerOneSpawnPoint;
+						break;
+					}
+				case PlayerDataPlayerId.Player4:
+					{
+						gameObject.transform.position = Global.Instance.PlayerOneSpawnPoint;
+						break;
+					}
+				}
+
+			}
+			else
+			{
+				base.Die();
+				Destroy (gameObject);
+			}
         }
 
         protected void Update()
         {
-			/*
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-
-            Vector3 input = new Vector3(horizontal, 0, vertical);
-
-            Mover.MoveToDirection(input);
-
-            bool shoot = Input.GetButton("Shoot");
-
-            if (shoot)
-            {
-                Weapons.Shoot(ProjectileLayer);
-            }
-			*/
+			if (_invulnerableTimer > 0f)
+			{
+				_invulnerableTimer -= Time.deltaTime;
+			}
+			else if (_invulnerableTimer < 0f)
+			{
+				IsInvulnerable = false;
+			}
         }
 
         public void Init(PlayerData playerData)

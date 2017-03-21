@@ -2,6 +2,7 @@
 using UnityEngine;
 using SpaceShooter.Data;
 using SpaceShooter.Systems;
+using PlayerDataPlayerId = SpaceShooter.Data.PlayerData.PlayerId;
 
 namespace SpaceShooter
 {
@@ -19,7 +20,31 @@ namespace SpaceShooter
                 if (unitPrefab != null)
                 {
                     PlayerUnit unit = Instantiate(unitPrefab, transform);
-                    unit.transform.position = Vector3.zero;
+
+					switch (playerData.Id)
+					{
+					case PlayerDataPlayerId.Player1:
+						{
+							unit.transform.position = Global.Instance.PlayerOneSpawnPoint;
+							break;
+						}
+					case PlayerDataPlayerId.Player2:
+						{
+							unit.transform.position = Global.Instance.PlayerTwoSpawnPoint;
+							break;
+						}
+					case PlayerDataPlayerId.Player3:
+						{
+							unit.transform.position = Global.Instance.PlayerThreeSpawnPoint;
+							break;
+						}
+					case PlayerDataPlayerId.Player4:
+						{
+							unit.transform.position = Global.Instance.PlayerFourSpawnPoint;
+							break;
+						}
+					}
+
                     unit.transform.rotation = Quaternion.identity;
                     unit.Init(playerData);
 

@@ -39,6 +39,11 @@ namespace SpaceShooter.Systems
         public GameData CurrentGameData { get; set; }
         public SaveManager SaveManager { get; private set; }
 
+		public Vector3 PlayerOneSpawnPoint = new Vector3(-9f, 0f, -5f);
+		public Vector3 PlayerTwoSpawnPoint = new Vector3(-3f, 0f, -5f);
+		public Vector3 PlayerThreeSpawnPoint = new Vector3(3f, 0f, -5f);
+		public Vector3 PlayerFourSpawnPoint = new Vector3(9f, 0f, -5f);
+
         protected void Awake()
         {
             if (_instance == null)
