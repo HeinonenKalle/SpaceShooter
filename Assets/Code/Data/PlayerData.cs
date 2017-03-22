@@ -15,6 +15,7 @@ namespace SpaceShooter.Data
 
 		public enum ControlType
 		{
+            None = -1,
 			WASD,
 			Arrows,
 			Gamepad1,

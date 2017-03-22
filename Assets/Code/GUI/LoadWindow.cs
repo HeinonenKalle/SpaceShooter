@@ -17,7 +17,10 @@ namespace SpaceShooter.GUI
         public void Init(MenuManager menuManager)
         {
             _menuManager = menuManager;
+            _contentParent = GetComponentInChildren<VerticalLayoutGroup>(true);
             List<string> saveNames = Global.Instance.SaveManager.GetAllSaveNames();
+
+            Debug.Log(saveNames.Count.ToString());
 
             foreach (string saveName in saveNames)
             {

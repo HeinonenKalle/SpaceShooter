@@ -18,7 +18,7 @@ namespace SpaceShooter.GUI
 
         private Coroutine _rotateCoroutine;
         
-        void Awake()
+        public void Init()
         {
             gameObject.SetActive(false);
             Global.Instance.GameManager.GameStateChanging += HandleGameStateChanging;

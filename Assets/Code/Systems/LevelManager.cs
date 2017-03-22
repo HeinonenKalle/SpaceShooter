@@ -45,7 +45,29 @@ namespace SpaceShooter.Systems
             }
 
 #if UNITY_EDITOR
+            GameData loadData = new GameData()
+            {
+                Level = 1,
+                PlayerDataList = new List<PlayerData>()
+                {
+                    new PlayerData()
+                    {
+                        Id = PlayerData.PlayerId.Player1,
+                        Controller = PlayerData.ControlType.WASD,
+                        UnitType = PlayerUnit.UnitType.Balanced,
+                        Lives = 3
+                    },
+                    new PlayerData()
+                    {
+                        Id = PlayerData.PlayerId.Player2,
+                        Controller = PlayerData.ControlType.Arrows,
+                        UnitType = PlayerUnit.UnitType.Fast,
+                        Lives = 3
+                    }
+                }
+            };
 
+            Global.Instance.CurrentGameData = loadData;
 #endif
 
             PlayerUnits.Init(Global.Instance.CurrentGameData.PlayerDataList.ToArray());
