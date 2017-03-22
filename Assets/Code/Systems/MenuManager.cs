@@ -50,6 +50,13 @@ namespace SpaceShooter.Systems
 
         }
 
+        public void LoadGame(string saveFileName)
+        {
+            GameData loadData = Global.Instance.SaveManager.Load(saveFileName);
+            Global.Instance.CurrentGameData = loadData;
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
+        }
+
         public void QuitGame()
         {
             Application.Quit();

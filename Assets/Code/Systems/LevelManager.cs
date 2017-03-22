@@ -44,7 +44,11 @@ namespace SpaceShooter.Systems
                 enemySpawner.Init(EnemyUnits);
             }
 
-			PlayerUnits.Init(Global.Instance.CurrentGameData.PlayerDataList.ToArray());
+#if UNITY_EDITOR
+
+#endif
+
+            PlayerUnits.Init(Global.Instance.CurrentGameData.PlayerDataList.ToArray());
 
             _conditions = GetComponentsInChildren<ConditionBase>();
 
