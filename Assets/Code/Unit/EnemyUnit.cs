@@ -9,6 +9,8 @@ namespace SpaceShooter
     {
         public EnemyUnits EnemyUnits { get; private set; }
 
+        [SerializeField] private int _damage;
+
         private IPathUser _pathUser;
 
         public override int ProjectileLayer
@@ -32,6 +34,24 @@ namespace SpaceShooter
             _pathUser = gameObject.GetOrAddComponent<PathUser>();
 
             _pathUser.Init(Mover, path);
+        }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            IHealth damageReceiver = collision.gameObject.GetComponentInChildren<IHealth>();
+
+            if (damageReceiver != null)
+            {
+                // If collision has damageReceiver, it is a player unit.
+                // Check if the player unit is invulnerable or not.
+                if (!collision.gameObject.GetComponentInChildren<PlayerUnit>().IsInvulnerable)
+                {
+                    damageReceiver.TakeDamage(_damage);
+                }
+
+
+                TakeDamage(10);
+            }
         }
     }
 }

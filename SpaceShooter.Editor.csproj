@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E2DB34C1-C76B-86AF-2C0A-4B4232B9B951}</ProjectGuid>
+    <ProjectGuid>{5492F5C3-6900-FC38-EE09-698642B6E649}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -52,26 +52,65 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.EditorTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.EditorTestsRunner.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.PlaymodeTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.PlaymodeTestsRunner">
       <HintPath>Library\UnityAssemblies\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Addons\DOTween\DOTween.dll</HintPath>
@@ -85,59 +124,18 @@
     <Reference Include="DOTween50">
       <HintPath>Assets\Addons\DOTween\DOTween50.dll</HintPath>
     </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\Addons\DOTween\Editor\DOTweenEditor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Code\Conditions\ConditionBase.cs" />
-    <Compile Include="Assets\Code\Conditions\EnemiesKilledCondition.cs" />
-    <Compile Include="Assets\Code\Data\GameData.cs" />
-    <Compile Include="Assets\Code\Data\PlayerData.cs" />
-    <Compile Include="Assets\Code\GUI\ControllerSelector.cs" />
-    <Compile Include="Assets\Code\GUI\GlobalGUI.cs" />
-    <Compile Include="Assets\Code\GUI\LoadItem.cs" />
-    <Compile Include="Assets\Code\GUI\LoadWindow.cs" />
-    <Compile Include="Assets\Code\GUI\LoadingIndicator.cs" />
-    <Compile Include="Assets\Code\GUI\PlayerSettings.cs" />
-    <Compile Include="Assets\Code\GUI\PlayerSettingsItem.cs" />
-    <Compile Include="Assets\Code\GUI\PlayerUnitSelector.cs" />
-    <Compile Include="Assets\Code\GUI\Window.cs" />
-    <Compile Include="Assets\Code\Interfaces\IHealth.cs" />
-    <Compile Include="Assets\Code\Interfaces\IMover.cs" />
-    <Compile Include="Assets\Code\Interfaces\IShooter.cs" />
-    <Compile Include="Assets\Code\Systems\AsteroidPool.cs" />
-    <Compile Include="Assets\Code\Systems\BinaryFormatterSaveLoad.cs" />
-    <Compile Include="Assets\Code\Systems\Config.cs" />
-    <Compile Include="Assets\Code\Systems\GameManager.cs" />
-    <Compile Include="Assets\Code\Systems\GenericPool.cs" />
-    <Compile Include="Assets\Code\Systems\Global.cs" />
-    <Compile Include="Assets\Code\Systems\ISaveLoad.cs" />
-    <Compile Include="Assets\Code\Systems\InputManager.cs" />
-    <Compile Include="Assets\Code\Systems\JsonSaveLoad.cs" />
-    <Compile Include="Assets\Code\Systems\LevelManager.cs" />
-    <Compile Include="Assets\Code\Systems\MenuManager.cs" />
-    <Compile Include="Assets\Code\Systems\Pools.cs" />
-    <Compile Include="Assets\Code\Systems\Prefabs.cs" />
-    <Compile Include="Assets\Code\Systems\ProjectilePool.cs" />
-    <Compile Include="Assets\Code\Systems\SaveManager.cs" />
-    <Compile Include="Assets\Code\Systems\SceneManager.cs" />
-    <Compile Include="Assets\Code\Systems\States\GameState.cs" />
-    <Compile Include="Assets\Code\Systems\States\GameStateBase.cs" />
-    <Compile Include="Assets\Code\Systems\States\MenuState.cs" />
-    <Compile Include="Assets\Code\Unit\EnemySpawner.cs" />
-    <Compile Include="Assets\Code\Unit\EnemyUnit.cs" />
-    <Compile Include="Assets\Code\Unit\EnemyUnits.cs" />
-    <Compile Include="Assets\Code\Unit\Health.cs" />
-    <Compile Include="Assets\Code\Unit\Mover.cs" />
-    <Compile Include="Assets\Code\Unit\PlayerUnit.cs" />
-    <Compile Include="Assets\Code\Unit\PlayerUnits.cs" />
-    <Compile Include="Assets\Code\Unit\UnitBase.cs" />
-    <Compile Include="Assets\Code\Utility\Extensions.cs" />
-    <Compile Include="Assets\Code\WaypointSystem\IPathUser.cs" />
-    <Compile Include="Assets\Code\WaypointSystem\Path.cs" />
-    <Compile Include="Assets\Code\WaypointSystem\PathUser.cs" />
-    <Compile Include="Assets\Code\WaypointSystem\Waypoint.cs" />
-    <Compile Include="Assets\Code\Weapons\Projectile.cs" />
-    <Compile Include="Assets\Code\Weapons\Weapon.cs" />
-    <Compile Include="Assets\Code\Weapons\WeaponController.cs" />
+    <ProjectReference Include="SpaceShooter.csproj">
+      <Project>{E2DB34C1-C76B-86AF-2C0A-4B4232B9B951}</Project>
+      <Name>SpaceShooter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Code\Editor\PathInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Addons\DOTween\DOTween.XML" />
