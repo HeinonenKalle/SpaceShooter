@@ -45,10 +45,12 @@ namespace SpaceShooter.Systems
             }
 
 #if UNITY_EDITOR
-            GameData loadData = new GameData()
+            if (Global.Instance.CurrentGameData == null)
             {
-                Level = 1,
-                PlayerDataList = new List<PlayerData>()
+                GameData loadData = new GameData()
+                {
+                    Level = 1,
+                    PlayerDataList = new List<PlayerData>()
                 {
                     new PlayerData()
                     {
@@ -65,9 +67,10 @@ namespace SpaceShooter.Systems
                         Lives = 3
                     }
                 }
-            };
+                };
 
-            Global.Instance.CurrentGameData = loadData;
+                Global.Instance.CurrentGameData = loadData;
+            }
 #endif
 
             PlayerUnits.Init(Global.Instance.CurrentGameData.PlayerDataList.ToArray());

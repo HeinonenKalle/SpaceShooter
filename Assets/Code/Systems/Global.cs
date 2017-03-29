@@ -65,6 +65,8 @@ namespace SpaceShooter.Systems
         {
             DontDestroyOnLoad(gameObject);
 
+            Localization.LoadLanguage(SaveManager.Language);
+
             //Initialize
             if (_prefabs == null)
             {

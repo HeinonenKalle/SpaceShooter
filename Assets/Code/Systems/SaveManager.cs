@@ -2,6 +2,8 @@
 using SpaceShooter.Data;
 using System.IO;
 using UnityEngine;
+using SpaceShooter.Systems;
+using System;
 
 namespace SpaceShooter.SaveLoad
 {
@@ -10,6 +12,14 @@ namespace SpaceShooter.SaveLoad
         private readonly ISaveLoad<GameData> _saveLoad;
 
         public string FileExtension { get { return _saveLoad.FileExtension; } }
+
+        private const string LanguageKey = "Language";
+
+        public static LangCode Language
+        {
+            get { return (LangCode) Enum.Parse( typeof(LangCode), PlayerPrefs.GetString(LanguageKey, LangCode.FI.ToString())); }
+            set { PlayerPrefs.SetString(LanguageKey, value.ToString()); }
+        }
 
         public SaveManager(ISaveLoad<GameData> saveLoad)
         {
