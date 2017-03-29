@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SpaceShooter.Data;
 
 namespace SpaceShooter.GUI
 {
@@ -10,8 +11,9 @@ namespace SpaceShooter.GUI
         private Dropdown _dropdown;
 
         public PlayerUnit.UnitType SelectedUnitType { get; private set; }
-        
-        public void Init()
+        public PlayerData.PlayerId PlayerId { get; private set; }
+
+        public void Init(PlayerData.PlayerId playerId)
         {
             _dropdown = GetComponentInChildren<Dropdown>();
             _dropdown.ClearOptions();
@@ -28,6 +30,9 @@ namespace SpaceShooter.GUI
 
             _dropdown.AddOptions(optionDataList);
             _dropdown.onValueChanged.AddListener(OnValueChanged);
+
+            _dropdown.value = 0;
+            OnValueChanged(0);
         }
 
         private void OnValueChanged(int index)

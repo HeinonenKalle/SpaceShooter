@@ -16,5 +16,7 @@ namespace SpaceShooter.Configs
 
         public const string PlayerProjectileLayerName = "PlayerProjectile";
         public const string EnemyProjectileLayerName = "EnemyProjectile";
+
+        public const int Lives = 3;
     }
 }

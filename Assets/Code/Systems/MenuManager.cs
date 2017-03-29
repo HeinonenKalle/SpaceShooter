@@ -10,7 +10,7 @@ namespace SpaceShooter.Systems
     public class MenuManager : SceneManager
     {
         private LoadWindow _loadWindow;
-        private PlayerSettings _playerSettings;
+        private PlayerSettings _playerSettingsWindow;
 
         public override GameStateType StateType
         {
@@ -26,36 +26,27 @@ namespace SpaceShooter.Systems
             _loadWindow.Init(this);
             _loadWindow.Close();
 
-            _playerSettings = GetComponentInChildren<PlayerSettings>(true);
-            _playerSettings.Init(this);
+            _playerSettingsWindow = GetComponentInChildren<PlayerSettings>(true);
+            _playerSettingsWindow.Init(this);
+            _playerSettingsWindow.Close();
         }
 
-        // Use this for initialization
-        public void StartGame()
+        public void StartGame(List<PlayerData> playerDatas)
         {
+            _playerSettingsWindow.Close();
+
             Global.Instance.CurrentGameData = new GameData()
             {
                 Level = 1,
-                PlayerDataList = new List<PlayerData>()
-                {
-                    new PlayerData()
-                    {
-                        Id = PlayerData.PlayerId.Player1,
-                        Controller = PlayerData.ControlType.WASD,
-                        UnitType = PlayerUnit.UnitType.Balanced,
-                        Lives = 3
-                    },
-                    new PlayerData()
-                    {
-                        Id = PlayerData.PlayerId.Player2,
-                        Controller = PlayerData.ControlType.Arrows,
-                        UnitType = PlayerUnit.UnitType.Fast,
-                        Lives = 3
-                    }
-                }
+                PlayerDataList = playerDatas
             };
 
             Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
+        }
+
+        public void OpenStartGameWindow()
+        {
+            _playerSettingsWindow.Open();
         }
 
         // Update is called once per frame
