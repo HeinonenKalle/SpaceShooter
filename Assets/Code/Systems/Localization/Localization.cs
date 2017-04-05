@@ -27,7 +27,7 @@ namespace SpaceShooter.Systems
         {
             get { return Path.Combine(Application.dataPath, localizationFolderName); }
         }
-        
+
         public static Language CurrentLanguage { get; private set; }
 
         public static void LoadLanguage(LangCode languageCode)
@@ -87,8 +87,10 @@ namespace SpaceShooter.Systems
     [Serializable]
     public class Language
     {
-        [SerializeField] private List<string> _keys = new List<string>();
-        [SerializeField] private List<string> _values = new List<string>();
+        [SerializeField]
+        private List<string> _keys = new List<string>();
+        [SerializeField]
+        private List<string> _values = new List<string>();
 
         private bool _isInitialized = false;
 
@@ -132,18 +134,13 @@ namespace SpaceShooter.Systems
 #if UNITY_EDITOR
         public void SetValues(Dictionary<string, string> values)
         {
-            foreach(var kvp in values)
+            _keys.Clear();
+            _values.Clear();
+
+            foreach (var kvp in values)
             {
-                if(_keys.Contains(kvp.Key))
-                {
-                    int index = _keys.IndexOf(kvp.Key);
-                    _values[index] = kvp.Value;
-                }
-                else
-                {
-                    _keys.Add(kvp.Key);
-                    _values.Add(kvp.Value);
-                }
+                _keys.Add(kvp.Key);
+                _values.Add(kvp.Value);
             }
         }
 
